@@ -220,27 +220,31 @@ void CASkeleton::setMaterial(CAMaterial m)
 void CASkeleton::resetLocation()
 {
     location = glm::mat4(1.0f);
-    int num = articulaciones.size();
-    for (int i = 0; i < num; i++) articulaciones[i]->setParentLocation(location);
+    
+    for (int i = 0; i < articulaciones.size(); i++) 
+        articulaciones[i]->setParentLocation(location);
 }
 
 void CASkeleton::setLocation(glm::mat4 m)
 {
     location = glm::mat4(m);
-    int num = articulaciones.size();
-    for (int i = 0; i < num; i++) articulaciones[i]->setParentLocation(location);
+    
+    for (int i = 0; i < articulaciones.size(); i++)
+        articulaciones[i]->setParentLocation(location);
 }
 
 void CASkeleton::translate(glm::vec3 t)
 {
     location = glm::translate(location, t);
-    int num = articulaciones.size();
-    for (int i = 0; i < num; i++) articulaciones[i]->setParentLocation(location);
+    
+    for (int i = 0; i < articulaciones.size(); i++)
+        articulaciones[i]->setParentLocation(location);
 }
 
 void CASkeleton::rotate(float angle, glm::vec3 axis)
 {
     location = glm::rotate(location, glm::radians(angle), axis);
-    int num = articulaciones.size();
-    for (int i = 0; i < num; i++) articulaciones[i]->setParentLocation(location);
+    
+    for (int i = 0; i < articulaciones.size(); i++)
+        articulaciones[i]->setParentLocation(location);
 }
