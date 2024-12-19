@@ -7,8 +7,10 @@
 //
 // PROPÓSITO: Construye una articulación.
 //
-CABalljoint::CABalljoint(float l)
+CABalljoint::CABalljoint(float l, std::string nombre)
 {
+	this->nombre = nombre;
+
 	length = l;
 
 	location = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -20,6 +22,9 @@ CABalljoint::CABalljoint(float l)
 	angles[1] = 0.0f;
 	angles[2] = 0.0f;
 
+	limite[0][0] = -180.0f;	limite[1][0] = 180.0f;
+	limite[0][1] = -180.0f;	limite[1][1] = 180.0f;
+	limite[0][2] = -180.0f;	limite[1][2] = 180.0f;
 }
 
 //
@@ -31,6 +36,8 @@ CABalljoint::~CABalljoint()
 {
 	delete joint;
 	delete bone;
+
+	hijos.clear();
 }
 
 //
@@ -95,6 +102,11 @@ void CABalljoint::ComputeMatrix()
 	joint->setLocation(matrix);
 	glm::mat4 mm = glm::translate(matrix, glm::vec3(0.0f, 0.0f, length / 2));
 	bone->setLocation(mm);
+
+	glm::mat4 mmHijos = glm::translate(matrix, glm::vec3(0.0f, 0.0f, length));
+	for (int i = 0; i < hijos.size(); i++) {
+		hijos[i]->setLocation(mmHijos[3]);
+	}
 }
 
 //
@@ -124,6 +136,10 @@ void CABalljoint::initialize(CAVulkanState* vulkan)
 	bone->initialize(vulkan);
 	bone->setMaterial(boneMat);
 
+	for (int i = 0; i < hijos.size(); i++) {
+		hijos[i]->initialize(vulkan);
+	}
+
 	ComputeMatrix();
 }
 
@@ -136,6 +152,10 @@ void CABalljoint::updateUniformBuffers(CAVulkanState* vulkan, glm::mat4 view, gl
 {
 	joint->updateUniformBuffers(vulkan, view, projection);
 	bone->updateUniformBuffers(vulkan, view, projection);
+
+	for (int i = 0; i < hijos.size(); i++) {
+		hijos[i]->updateUniformBuffers(vulkan, view, projection);
+	}
 }
 
 //
@@ -147,6 +167,11 @@ void CABalljoint::finalize(CAVulkanState* vulkan)
 {
 	joint->finalize(vulkan);
 	bone->finalize(vulkan);
+
+	int num = hijos.size();
+	for (int i = num-1; i > 0; i--) {
+		hijos[i]->finalize(vulkan);
+	}
 }
 
 //
@@ -180,9 +205,27 @@ void CABalljoint::setOrientation(glm::vec3 nDir, glm::vec3 nUp)
 //
 void CABalljoint::setPose(float xrot, float yrot, float zrot)
 {
-	angles[0] = xrot;
-	angles[1] = yrot;
-	angles[2] = zrot;
+	if (xrot < limite[0][0])
+		angles[0] = limite[0][0];
+	else if (limite[1][0] < xrot)
+		angles[0] = limite[1][0];
+	else
+		angles[0] = xrot;
+
+	if (yrot < limite[0][1])
+		angles[1] = limite[0][1];
+	else if (limite[1][1] < yrot)
+		angles[1] = limite[1][1];
+	else
+		angles[1] = yrot;
+
+	if (zrot < limite[0][2])
+		angles[2] = limite[0][2];
+	else if (limite[1][2] < zrot)
+		angles[2] = limite[1][2];
+	else
+		angles[2] = zrot;
+
 	ComputeMatrix();
 }
 
@@ -195,6 +238,10 @@ void CABalljoint::addCommands(CAVulkanState* vulkan, VkCommandBuffer commandBuff
 {
 	joint->addCommands(vulkan, commandBuffer, index);
 	bone->addCommands(vulkan, commandBuffer, index);
+
+	for (int i = 0; i < hijos.size(); i++) {
+		hijos[i]->addCommands(vulkan, commandBuffer, index);
+	}
 }
 
 //
@@ -206,4 +253,32 @@ void CABalljoint::setLight(CALight l)
 {
 	joint->setLight(l);
 	bone->setLight(l);
+
+	for (int i = 0; i < hijos.size(); i++) {
+		hijos[i]->setLight(l);
+	}
+}
+
+void CABalljoint::anadirHijo(CABalljoint* c)
+{
+	hijos.push_back(c);
+	ComputeMatrix();
+}
+
+void CABalljoint::setLimitX(GLfloat min, GLfloat max)
+{
+	limite[0][0] = min;
+	limite[1][0] = max;
+}
+
+void CABalljoint::setLimitY(GLfloat min, GLfloat max)
+{
+	limite[0][1] = min;
+	limite[1][1] = max;
+}
+
+void CABalljoint::setLimitZ(GLfloat min, GLfloat max)
+{
+	limite[0][2] = min;
+	limite[1][2] = max;
 }

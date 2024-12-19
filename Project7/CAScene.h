@@ -3,6 +3,7 @@
 #include "CAVulkanState.h"
 #include "CAFigure.h"
 #include "CABalljoint.h"
+#include "CASkeleton.h"
 
 class CAScene {
 public:
@@ -14,10 +15,6 @@ public:
 
 private:
 	CAFigure* ground;
-	CAFigure* column;
-	CAFigure* cross;
-	CABalljoint* armL;
-	CABalljoint* armR;
-	float angle;
+	CASkeleton* esqueleto;
 };
 

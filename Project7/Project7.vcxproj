@@ -124,13 +124,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Tools\GLM\Include;../Tools\GLFW\include;C:\VulkanSDK\1.3.290.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\USER\OneDrive\Escritorio\PracticaVulkan\Tools\GLM\Include;C:\Users\USER\OneDrive\Escritorio\PracticaVulkan\Tools\GLFW\include;C:\VulkanSDK\1.3.290.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../Tools\GLFW\lib-vc2019;C:\VulkanSDK\1.3.290.0\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\USER\OneDrive\Escritorio\PracticaVulkan\Tools\GLFW\lib-vc2019;C:\VulkanSDK\1.3.290.0\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../Tools\GLM\Include;../Tools\GLFW\include;C:\VulkanSDK\1.3.290.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\USER\OneDrive\Escritorio\PracticaVulkan\Tools\GLM\Include;C:\Users\USER\OneDrive\Escritorio\PracticaVulkan\Tools\GLFW\include;C:\VulkanSDK\1.3.290.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -150,7 +150,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../Tools\GLFW\lib-vc2019;C:\VulkanSDK\1.3.290.0\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\USER\OneDrive\Escritorio\PracticaVulkan\Tools\GLFW\lib-vc2019;C:\VulkanSDK\1.3.290.0\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -163,6 +163,7 @@
     <ClCompile Include="CAGround.cpp" />
     <ClCompile Include="CAModel.cpp" />
     <ClCompile Include="CAScene.cpp" />
+    <ClCompile Include="CASkeleton.cpp" />
     <ClCompile Include="CASphere.cpp" />
     <ClCompile Include="CAVulkanState.cpp" />
     <ClCompile Include="main.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="CAMaterial.h" />
     <ClInclude Include="CAModel.h" />
     <ClInclude Include="CAScene.h" />
+    <ClInclude Include="CASkeleton.h" />
     <ClInclude Include="CASphere.h" />
     <ClInclude Include="CATransform.h" />
     <ClInclude Include="CAVertex.h" />

@@ -95,31 +95,31 @@ void CAModel::key_pressed(int key)
 	case GLFW_KEY_RIGHT:
 		camera->turnCW();
 		break;
-	case GLFW_KEY_S:
+	case GLFW_KEY_Z:
 		camera->setMoveStep(0.0f);
 		break;
-	case GLFW_KEY_KP_ADD:
+	case GLFW_KEY_M:
 		camera->setMoveStep(camera->getMoveStep() + 0.1f);
 		break;
-	case GLFW_KEY_KP_SUBTRACT:
+	case GLFW_KEY_N:
 		camera->setMoveStep(camera->getMoveStep() - 0.1f);
 		break;
-	case GLFW_KEY_Q:
+	case GLFW_KEY_W:
 		camera->setMoveStep(0.1f);
 		camera->moveUp();
 		camera->setMoveStep(0.0f);
 		break;
-	case GLFW_KEY_A:
+	case GLFW_KEY_S:
 		camera->setMoveStep(0.1f);
 		camera->moveDown();
 		camera->setMoveStep(0.0f);
 		break;
-	case GLFW_KEY_O:
+	case GLFW_KEY_A:
 		camera->setMoveStep(0.1f);
 		camera->moveLeft();
 		camera->setMoveStep(0.0f);
 		break;
-	case GLFW_KEY_P:
+	case GLFW_KEY_D:
 		camera->setMoveStep(0.1f);
 		camera->moveRight();
 		camera->setMoveStep(0.0f);
