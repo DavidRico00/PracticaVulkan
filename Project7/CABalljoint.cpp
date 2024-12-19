@@ -9,6 +9,7 @@
 //
 CABalljoint::CABalljoint(float l, std::string nombre)
 {
+	parentMatrix = glm::mat4(1.0f);
 	this->nombre = nombre;
 
 	length = l;
@@ -97,7 +98,7 @@ void CABalljoint::ComputeMatrix()
 	posem[2][3] = 0;
 	posem[3][3] = 1;
 
-	glm::mat4 matrix = jointm * posem;
+	glm::mat4 matrix = parentMatrix * jointm * posem;
 
 	joint->setLocation(matrix);
 	glm::mat4 mm = glm::translate(matrix, glm::vec3(0.0f, 0.0f, length / 2));
@@ -105,7 +106,7 @@ void CABalljoint::ComputeMatrix()
 
 	glm::mat4 mmHijos = glm::translate(matrix, glm::vec3(0.0f, 0.0f, length));
 	for (int i = 0; i < hijos.size(); i++) {
-		hijos[i]->setLocation(mmHijos[3]);
+		hijos[i]->setParentLocation(mmHijos);
 	}
 }
 
@@ -185,6 +186,11 @@ void CABalljoint::setLocation(glm::vec3 loc)
 	ComputeMatrix();
 }
 
+void CABalljoint::setParentLocation(glm::mat4 loc)
+{
+	parentMatrix = loc;
+	ComputeMatrix();
+}
 //
 // FUNCIÓN: CABalljoint::setOrientation(glm::vec3 nDir, glm::vec3 nUp)
 //

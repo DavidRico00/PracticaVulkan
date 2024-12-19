@@ -22,7 +22,7 @@ private:
 	CASphere* joint;
 	CACylinder* bone;
 	void ComputeMatrix();
-
+	glm::mat4 parentMatrix;
 	std::string nombre;
 	std::vector<CABalljoint*> hijos;
 	glm::mat2x3 limite;
@@ -44,6 +44,8 @@ public:
 	void setLimitX(GLfloat min, GLfloat max);
 	void setLimitY(GLfloat min, GLfloat max);
 	void setLimitZ(GLfloat min, GLfloat max);
+
+	void setParentLocation(glm::mat4 l);
 };
 
 
