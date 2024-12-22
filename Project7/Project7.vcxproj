@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="CAApplication.cpp" />
     <ClCompile Include="CABalljoint.cpp" />
     <ClCompile Include="CACamera.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="CAApplication.h" />
     <ClInclude Include="CABalljoint.h" />
     <ClInclude Include="CACamera.h" />

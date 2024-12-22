@@ -42,6 +42,9 @@ CAScene::CAScene(CAVulkanState* vulkan)
 	esqueleto->initialize(vulkan);
 	esqueleto->setLight(light);
 	esqueleto->setMaterial(blueMat);
+
+	animacion = new Animation(0.7f, esqueleto);
+	animacion->crearAnimacion();
 }
 
 //
@@ -86,4 +89,9 @@ void CAScene::update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection
 {
 	ground->updateUniformBuffers(vulkan, view, projection);
 	esqueleto->updateUniformBuffers(vulkan, view, projection);
+}
+
+Animation* CAScene::getAnimation()
+{
+	return animacion;
 }

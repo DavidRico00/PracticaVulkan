@@ -29,6 +29,7 @@ public:
 	void rotate(float angle, glm::vec3 axis);
 	void setLight(CALight l);
 	void setMaterial(CAMaterial m);
+	std::vector<CABalljoint*> getHijos();
 
 private:
 	CAUniformBuffer transformBuffer;

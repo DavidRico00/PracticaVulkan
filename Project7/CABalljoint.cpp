@@ -288,3 +288,13 @@ void CABalljoint::setLimitZ(GLfloat min, GLfloat max)
 	limite[0][2] = min;
 	limite[1][2] = max;
 }
+
+std::string CABalljoint::getName()
+{
+	return this->nombre;
+}
+
+std::vector<CABalljoint*> CABalljoint::getHijos()
+{
+	return this->hijos;
+}

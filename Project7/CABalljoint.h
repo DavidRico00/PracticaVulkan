@@ -45,6 +45,9 @@ public:
 	void setLimitY(GLfloat min, GLfloat max);
 	void setLimitZ(GLfloat min, GLfloat max);
 
+	std::string getName();
+	std::vector<CABalljoint*> getHijos();
+
 	void setParentLocation(glm::mat4 l);
 };
 

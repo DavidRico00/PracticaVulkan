@@ -21,6 +21,8 @@ CAModel::CAModel(CAVulkanState* vulkan)
 	this->camera->setMoveStep(0.0f);
 
 	this->scene = new CAScene(vulkan);
+
+	this->t = 0.0f;
 }
 
 //
@@ -130,6 +132,11 @@ void CAModel::key_pressed(int key)
 	case GLFW_KEY_L:
 		camera->turnRight();
 		break;
+	case GLFW_KEY_T:
+		this->scene->getAnimation()->animacion(t);
+		t += 0.05f;
+		break;
+
 	}
 }
 
@@ -140,7 +147,7 @@ void CAModel::key_pressed(int key)
 //
 void CAModel::mouse_button(int button, int action)
 {
-//	std::cout << "Model mouse button" << std::endl;
+
 }
 
 //
@@ -150,5 +157,5 @@ void CAModel::mouse_button(int button, int action)
 //
 void CAModel::mouse_move(double xpos, double ypos)
 {
-//	std::cout << "Model mouse move(" << xpos << "," << ypos << ")" << std::endl;
+
 }
