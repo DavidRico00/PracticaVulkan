@@ -23,13 +23,14 @@ void Animation::crearAnimacion()
 	glm::vec2(0.0f, 0.0f),		//knee_r
 	glm::vec2(0.0f, 0.0f),		//spine
 	glm::vec2(0.0f, 0.0f),		//pelvis
-	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(90.0f, 0.0f),		//shoulder_l
 	glm::vec2(0.0f, 0.0f),		//elbow_l
-	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(90.0f, 0.0f),		//shoulder_r
 	glm::vec2(0.0f, 0.0f)		//elbow_r
 	};
 	addKeyFrame(kf);
 
+	
 	kf.tiempo = 0.5f;
 	kf.direccion = {
 	glm::vec2(-90.0f, 0.0f),	//leg_l
@@ -38,10 +39,10 @@ void Animation::crearAnimacion()
 	glm::vec2(0.0f, 0.0f),		//knee_r
 	glm::vec2(-20.0f, 0.0f),	//spine
 	glm::vec2(-10.0f, 0.0f),	//pelvis
-	glm::vec2(0.0f, 0.0f),		//shoulder_l
-	glm::vec2(0.0f, 0.0f),		//elbow_l
-	glm::vec2(0.0f, 0.0f),		//shoulder_r
-	glm::vec2(0.0f, 0.0f)		//elbow_r
+	glm::vec2(30.0f, 80.0f),	//shoulder_l
+	glm::vec2(90.0f, -90.0f),	//elbow_l
+	glm::vec2(80.0f, 20.0f),	//shoulder_r
+	glm::vec2(0.0f, 90.0f)		//elbow_r
 	};
 	addKeyFrame(kf);
 	
@@ -51,15 +52,16 @@ void Animation::crearAnimacion()
 	glm::vec2(0.0f, 0.0f),		//knee_l
 	glm::vec2(30.0f, -70.0f),	//leg_r
 	glm::vec2(100.0f, 0.0f),	//knee_r
-	glm::vec2(-50.0f, 0.0f),	//spine
+	glm::vec2(-20.0f, 0.0f),	//spine
 	glm::vec2(-20.0f, 0.0f),	//pelvis
-	glm::vec2(0.0f, 0.0f),		//shoulder_l
-	glm::vec2(0.0f, 0.0f),		//elbow_l
-	glm::vec2(0.0f, 0.0f),		//shoulder_r
-	glm::vec2(0.0f, 0.0f)		//elbow_r
+	glm::vec2(30.0f, 80.0f),	//shoulder_l
+	glm::vec2(90.0f, -90.0f),	//elbow_l
+	glm::vec2(0.0f, 90.0f),		//shoulder_r
+	glm::vec2(0.0f, 10.0f)		//elbow_r
 	};
 	addKeyFrame(kf);
 
+	
 	kf.tiempo = 1.5f;
 	kf.direccion = {
 	glm::vec2(-45.0f, 0.0f),	//leg_l
@@ -68,10 +70,10 @@ void Animation::crearAnimacion()
 	glm::vec2(120.0f, 0.0f),	//knee_r
 	glm::vec2(-20.0f, 0.0f),	//spine
 	glm::vec2(-10.0f, 0.0f),	//pelvis
-	glm::vec2(0.0f, 0.0f),		//shoulder_l
-	glm::vec2(0.0f, 0.0f),		//elbow_l
-	glm::vec2(0.0f, 0.0f),		//shoulder_r
-	glm::vec2(0.0f, 0.0f)		//elbow_r
+	glm::vec2(70.0f, 50.0f),	//shoulder_l
+	glm::vec2(45.0f, -40.0f),	//elbow_l
+	glm::vec2(70.0f, 40.0f),	//shoulder_r
+	glm::vec2(0.0f, 10.0f)		//elbow_r
 	};
 	addKeyFrame(kf);
 
@@ -83,13 +85,12 @@ void Animation::crearAnimacion()
 	glm::vec2(0.0f, 0.0f),		//knee_r
 	glm::vec2(0.0f, 0.0f),		//spine
 	glm::vec2(0.0f, 0.0f),		//pelvis
-	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(90.0f, 0.0f),		//shoulder_l
 	glm::vec2(0.0f, 0.0f),		//elbow_l
-	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(90.0f, 0.0f),		//shoulder_r
 	glm::vec2(0.0f, 0.0f)		//elbow_r
 	};
 	addKeyFrame(kf);
-
 }
 
 void Animation::addKeyFrame(KeyFrame kf)

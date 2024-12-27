@@ -140,14 +140,6 @@ CASkeleton::~CASkeleton()
 
 void CASkeleton::initialize(CAVulkanState* vulkan)
 {
-   // location = glm::mat4(1.0f);
-
-    /*
-    for (int i = 0; i < articulaciones.size(); i++) {
-        articulaciones[i]->initialize(vulkan);
-    }
-    */
-
     size_t transformBufferSize = sizeof(CATransform);
     vulkan->createUniformBuffer(transformBufferSize, &transformBuffer);
 
