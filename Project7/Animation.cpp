@@ -13,32 +13,89 @@ Animation::~Animation()
 
 void Animation::crearAnimacion()
 {
-	KeyFrame kf1, kf2;
+	KeyFrame kf;
 
-	kf1.tiempo = 0.7f;
-	kf1.direcion = {
-	glm::vec2(0.0f, 0.0f),
-	glm::vec2(90.0f, 0.0f),
-	glm::vec2(0.0f, 0.0f),
-	glm::vec2(-90.0f, 0.0f)
+	kf.tiempo = 0.0f;
+	kf.direccion = {
+	glm::vec2(0.0f, 0.0f),		//leg_l
+	glm::vec2(0.0f, 0.0f),		//knee_l
+	glm::vec2(0.0f, 0.0f),		//leg_r
+	glm::vec2(0.0f, 0.0f),		//knee_r
+	glm::vec2(0.0f, 0.0f),		//spine
+	glm::vec2(0.0f, 0.0f),		//pelvis
+	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(0.0f, 0.0f),		//elbow_l
+	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(0.0f, 0.0f)		//elbow_r
 	};
+	addKeyFrame(kf);
 
-
-	kf2.tiempo = 0.7f;
-	kf2.direcion = {
-	glm::vec2(0.0f, 0.0f),
-	glm::vec2(-90.0f, 0.0f),
-	glm::vec2(0.0f, 0.0f),
-	glm::vec2(90.0f, 0.0f)
+	kf.tiempo = 0.5f;
+	kf.direccion = {
+	glm::vec2(-90.0f, 0.0f),	//leg_l
+	glm::vec2(100.0f, 0.0f),	//knee_l
+	glm::vec2(20.0f, 0.0f),		//leg_r
+	glm::vec2(0.0f, 0.0f),		//knee_r
+	glm::vec2(-20.0f, 0.0f),	//spine
+	glm::vec2(-10.0f, 0.0f),	//pelvis
+	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(0.0f, 0.0f),		//elbow_l
+	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(0.0f, 0.0f)		//elbow_r
 	};
+	addKeyFrame(kf);
+	
+	kf.tiempo = 1.0f;
+	kf.direccion = {
+	glm::vec2(-90.0f, 0.0f),	//leg_l
+	glm::vec2(0.0f, 0.0f),		//knee_l
+	glm::vec2(30.0f, -70.0f),	//leg_r
+	glm::vec2(100.0f, 0.0f),	//knee_r
+	glm::vec2(-50.0f, 0.0f),	//spine
+	glm::vec2(-20.0f, 0.0f),	//pelvis
+	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(0.0f, 0.0f),		//elbow_l
+	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(0.0f, 0.0f)		//elbow_r
+	};
+	addKeyFrame(kf);
 
-	addKeyFrame(kf1);
-	addKeyFrame(kf2);
+	kf.tiempo = 1.5f;
+	kf.direccion = {
+	glm::vec2(-45.0f, 0.0f),	//leg_l
+	glm::vec2(0.0f, 0.0f),		//knee_l
+	glm::vec2(-30.0f, -10.0f),	//leg_r
+	glm::vec2(120.0f, 0.0f),	//knee_r
+	glm::vec2(-20.0f, 0.0f),	//spine
+	glm::vec2(-10.0f, 0.0f),	//pelvis
+	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(0.0f, 0.0f),		//elbow_l
+	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(0.0f, 0.0f)		//elbow_r
+	};
+	addKeyFrame(kf);
+
+	kf.tiempo = 1.8f;
+	kf.direccion = {
+	glm::vec2(0.0f, 0.0f),		//leg_l
+	glm::vec2(0.0f, 0.0f),		//knee_l
+	glm::vec2(0.0f, 0.0f),		//leg_r
+	glm::vec2(0.0f, 0.0f),		//knee_r
+	glm::vec2(0.0f, 0.0f),		//spine
+	glm::vec2(0.0f, 0.0f),		//pelvis
+	glm::vec2(0.0f, 0.0f),		//shoulder_l
+	glm::vec2(0.0f, 0.0f),		//elbow_l
+	glm::vec2(0.0f, 0.0f),		//shoulder_r
+	glm::vec2(0.0f, 0.0f)		//elbow_r
+	};
+	addKeyFrame(kf);
+
 }
 
 void Animation::addKeyFrame(KeyFrame kf)
 {
-	this->vKeyFrame.push_back(kf);
+	this->vKeyFrame.push_back({
+		kf.tiempo, kf.direccion});
 }
 
 void Animation::animacion(float tiempo)
@@ -49,68 +106,82 @@ void Animation::animacion(float tiempo)
 		{
 			float intT = (tiempo - vKeyFrame[i].tiempo) / (vKeyFrame[i+1].tiempo - vKeyFrame[i].tiempo);
 						
-			std::vector<glm::vec2> ini = vKeyFrame[i].direcion;
-			std::vector<glm::vec2> fin = vKeyFrame[i+1].direcion;
+			std::vector<glm::vec2> ini = vKeyFrame[i].direccion;
+			std::vector<glm::vec2> fin = vKeyFrame[i+1].direccion;
 
 
-			for (int j = 0; j < vKeyFrame[i].direcion.size(); j++)
+			for (int j = 0; j < vKeyFrame[i].direccion.size(); j++)
 			{
 				glm::vec2 pos = ini[j] + intT * (fin[j] - ini[j]);
 
-				interpolacion_pos1("leg_l", pos);
-
-				/*switch (j)
+				switch (j)
 				{
 				case 0:
-					interpolacion_pos1("leg_l", pos);
+					interpolacion_pose("leg_l", NULL, pos);
 					break;
 
 				case 1:
-					interpolacion_pos1("leg_R", pos);
+					interpolacion_pose("knee_l", NULL, pos);
 					break;
 
 				case 2:
-					interpolacion_pos1("knee_r", pos);
+					interpolacion_pose("leg_r", NULL, pos);
 					break;
 
 				case 3:
-					interpolacion_pos1("knee_l", pos);
+					interpolacion_pose("knee_r", NULL, pos);
+					break;
+
+				case 4:
+					interpolacion_pose("spine", NULL, pos);
+					break;
+
+				case 5:
+					interpolacion_pose("pelvis", NULL, pos);
+					break;
+
+				case 6:
+					interpolacion_pose("shoulder_l", NULL, pos);
+					break;
+
+				case 7:
+					interpolacion_pose("elbow_l", NULL, pos);
+					break;
+
+				case 8:
+					interpolacion_pose("shoulder_r", NULL, pos);
+					break;
+
+				case 9:
+					interpolacion_pose("elbow_r", NULL, pos);
 					break;
 
 				default:
 					break;
-				}*/
+				}
 			}
 		}
 	}
 }
 
-void Animation::interpolacion_pos1(std::string nombre, glm::vec2 v)
+void Animation::interpolacion_pose(std::string nombre, CABalljoint* ballJoint, glm::vec2 v) 
 {
-	std::vector<CABalljoint*> art = this->esqueleto->getHijos();
+	std::vector<CABalljoint*> art;
+
+	if(ballJoint == NULL)
+		art = this->esqueleto->getHijos();
+	else
+		art = ballJoint->getHijos();
 
 	for (int i = 0; i < art.size(); i++)
 	{
 		if (art[i]->getName() == nombre)
 		{
 			art[i]->setPose(v.x, v.y, 0.0f);
-		}
-		
-		interpolacion_pos2(nombre, art[i], v);
-	}
-}
-
-void Animation::interpolacion_pos2(std::string nombre, CABalljoint* ballJoint, glm::vec2 v)
-{
-	std::vector<CABalljoint*> art = ballJoint->getHijos();
-
-	for (int i = 0; i < art.size(); i++)
-	{
-		if (art[i]->getName() == nombre)
-		{
-			art[i]->setPose(v.x, v.y, 0.0f);
+			break;
 		}
 
-		interpolacion_pos2(nombre, art[i], v);
+		interpolacion_pose(nombre, art[i], v);
 	}
+
 }

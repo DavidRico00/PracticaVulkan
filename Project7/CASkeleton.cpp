@@ -114,7 +114,6 @@ CASkeleton::CASkeleton(std::string name, glm::vec3 offset_p, glm::vec3 eje_z, gl
     legR->anadirHijo(kneeR);
     kneeR->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
     kneeR->setOrientation(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-   // kneeR->setPose(90.0f, 0.0f, 0.0f);      //MOVER RODILLA HACIA ATRAS
 
     CABalljoint* ankleR = new CABalljoint(0.25f, "ankle_r");
     ankleR->initialize(vulkan);

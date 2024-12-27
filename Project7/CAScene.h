@@ -13,6 +13,7 @@ public:
 	void finalize(CAVulkanState* vulkan);
 	void addCommands(CAVulkanState* vulkan, VkCommandBuffer commandBuffer, int index);
 	void update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection);
+	void setInicioToCero();
 
 	Animation* getAnimation();
 
@@ -20,5 +21,6 @@ private:
 	CAFigure* ground;
 	CASkeleton* esqueleto;
 	Animation* animacion;
+	float inicio = 0.0f;
 };
 

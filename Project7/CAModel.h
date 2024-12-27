@@ -15,8 +15,6 @@ private:
 	CAScene* scene;
 	CACamera* camera;
 
-	float t;
-
 public:
 	CAModel(CAVulkanState* vulkan);
 	~CAModel();

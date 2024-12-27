@@ -89,9 +89,17 @@ void CAScene::update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection
 {
 	ground->updateUniformBuffers(vulkan, view, projection);
 	esqueleto->updateUniformBuffers(vulkan, view, projection);
+
+	this->inicio += 0.01f;
+	animacion->animacion(inicio);
 }
 
 Animation* CAScene::getAnimation()
 {
 	return animacion;
+}
+
+void CAScene::setInicioToCero()
+{
+	this->inicio = 0.0f;
 }

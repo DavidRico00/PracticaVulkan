@@ -21,8 +21,6 @@ CAModel::CAModel(CAVulkanState* vulkan)
 	this->camera->setMoveStep(0.0f);
 
 	this->scene = new CAScene(vulkan);
-
-	this->t = 0.0f;
 }
 
 //
@@ -132,11 +130,9 @@ void CAModel::key_pressed(int key)
 	case GLFW_KEY_L:
 		camera->turnRight();
 		break;
-	case GLFW_KEY_T:
-		this->scene->getAnimation()->animacion(t);
-		t += 0.05f;
+	case GLFW_KEY_R:
+		scene->setInicioToCero();
 		break;
-
 	}
 }
 

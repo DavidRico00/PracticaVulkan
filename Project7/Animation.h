@@ -4,7 +4,7 @@
 
 struct KeyFrame {
 	float tiempo;
-	std::vector<glm::vec2> direcion;
+	std::vector<glm::vec2> direccion;
 };
 
 class Animation
@@ -22,7 +22,6 @@ public:
 
 	void addKeyFrame(KeyFrame kf);
 	void animacion(float t);
-	void interpolacion_pos1(std::string nombre, glm::vec2 v);
-	void interpolacion_pos2(std::string nombre, CABalljoint* ballJoint, glm::vec2 v);
+	void interpolacion_pose(std::string nombre, CABalljoint* ballJoint, glm::vec2 v);
 };
 
