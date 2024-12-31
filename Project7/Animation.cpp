@@ -46,6 +46,7 @@ void Animation::crearAnimacion()
 	};
 	addKeyFrame(kf);
 	
+	
 	kf.tiempo = 1.0f;
 	kf.direccion = {
 	glm::vec2(-90.0f, 0.0f),	//leg_l
@@ -77,6 +78,7 @@ void Animation::crearAnimacion()
 	};
 	addKeyFrame(kf);
 
+
 	kf.tiempo = 1.8f;
 	kf.direccion = {
 	glm::vec2(0.0f, 0.0f),		//leg_l
@@ -91,6 +93,7 @@ void Animation::crearAnimacion()
 	glm::vec2(0.0f, 0.0f)		//elbow_r
 	};
 	addKeyFrame(kf);
+	
 }
 
 void Animation::addKeyFrame(KeyFrame kf)

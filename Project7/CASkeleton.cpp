@@ -10,22 +10,22 @@ CASkeleton::CASkeleton(std::string name, glm::vec3 offset_p, glm::vec3 eje_z, gl
     this->location = glm::mat4(glm::vec4(right,0.0f), glm::vec4(up,0.0f), glm::vec4(dir,0.0f), glm::vec4(offset,1.0f));
     this->name = name;
 
-    CABalljoint* pelvis = new CABalljoint(0.3f, "pelvis");
-    pelvis->initialize(vulkan);
-    pelvis->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
-    pelvis->setOrientation(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        CABalljoint* pelvis = new CABalljoint(0.3f, "pelvis");
+        pelvis->initialize(vulkan);
+        pelvis->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
+        pelvis->setOrientation(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-    CABalljoint* spine = new CABalljoint(0.4f, "spine");
-    spine->initialize(vulkan);
-    pelvis->anadirHijo(spine);
-    spine->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
-    spine->setOrientation(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            CABalljoint* spine = new CABalljoint(0.4f, "spine");
+            spine->initialize(vulkan);
+            pelvis->anadirHijo(spine);
+            spine->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
+            spine->setOrientation(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    CABalljoint* neck = new CABalljoint(0.35f, "neck");
-    neck->initialize(vulkan);
-    spine->anadirHijo(neck);
-    neck->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
-    neck->setOrientation(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+                CABalljoint* neck = new CABalljoint(0.35f, "neck");
+                neck->initialize(vulkan);
+                spine->anadirHijo(neck);
+                neck->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
+                neck->setOrientation(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     CABalljoint* clavicleL = new CABalljoint(0.25f, "clavicle_l");
     clavicleL->initialize(vulkan);

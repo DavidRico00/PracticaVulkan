@@ -133,6 +133,15 @@ void CAModel::key_pressed(int key)
 	case GLFW_KEY_R:
 		scene->setInicioToCero();
 		break;
+	case GLFW_KEY_1:
+		scene->modificarIncremento(-0.01f);
+		break;
+	case GLFW_KEY_2:
+		scene->modificarIncremento(0.0f);
+		break;
+	case GLFW_KEY_3:
+		scene->modificarIncremento(0.01f);
+		break;
 	}
 }
 

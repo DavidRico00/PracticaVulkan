@@ -90,8 +90,16 @@ void CAScene::update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection
 	ground->updateUniformBuffers(vulkan, view, projection);
 	esqueleto->updateUniformBuffers(vulkan, view, projection);
 
-	this->inicio += 0.01f;
-	animacion->animacion(inicio);
+	if (tiempo >= -0.2f && tiempo < 2.0f)
+		this->tiempo += this->incremento;
+
+	if (tiempo >= 2.0f)
+		this->tiempo = 0.0f;
+
+	if (tiempo <= -0.2f)
+		this->tiempo = 1.9f;
+
+	animacion->animacion(tiempo);
 }
 
 Animation* CAScene::getAnimation()
@@ -99,7 +107,12 @@ Animation* CAScene::getAnimation()
 	return animacion;
 }
 
+void CAScene::modificarIncremento(float f)
+{
+	this->incremento = f;
+}
+
 void CAScene::setInicioToCero()
 {
-	this->inicio = 0.0f;
+	this->tiempo = 0.0f;
 }

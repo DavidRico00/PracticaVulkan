@@ -16,11 +16,13 @@ public:
 	void setInicioToCero();
 
 	Animation* getAnimation();
+	void modificarIncremento(float f);
 
 private:
 	CAFigure* ground;
 	CASkeleton* esqueleto;
 	Animation* animacion;
-	float inicio = 0.0f;
+	float tiempo = 0.0f;
+	float incremento = 0.01f;
 };
 
